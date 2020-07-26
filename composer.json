@@ -1,0 +1,23 @@
+{
+    "name": "espora/http-logger",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alejandro Flores",
+            "email": "alejandro@esporaestudio.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EsporaHttpLogger\\": "src/"
+        }
+    },
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EsporaHttpLogger\\EsporaHttpLoggerServiceProvider"
+            ]
+        }
+    }
+}
