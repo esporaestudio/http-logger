@@ -9,14 +9,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "EsporaHttpLogger\\": "src/"
+            "Espora\\HttpLogger\\": "src/"
         }
     },
     "require": {},
     "extra": {
         "laravel": {
             "providers": [
-                "EsporaHttpLogger\\EsporaHttpLoggerServiceProvider"
+                "Espora\\HttpLogger\\HttpLoggerServiceProvider"
             ]
         }
     }

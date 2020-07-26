@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateHttpLogsTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('http_logs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('ip', 256);
+            $table->string('url');
+            $table->string('method');
+            $table->longText('req_header');
+            $table->longText('req_body');
+            $table->longText('res_header');
+            $table->longText('res_body');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('http_logs');
+    }
+}
