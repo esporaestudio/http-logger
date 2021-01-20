@@ -34,7 +34,7 @@ class LogRequest
 
         $httpLog = HttpLog::create($_data);
 
-        $request->merge('mid_http_log_id', $httpLog->id);
+        $request->merge(['mid_http_log_id' => $httpLog->id]);
 
         $response = $next($request);
 
