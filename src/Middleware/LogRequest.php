@@ -25,7 +25,7 @@ class LogRequest
         $_data = [];
         $_data['ip'] = $request->ip();
         $fullUrl = $request->fullUrl();
-        $_data['url'] = substr($fullUrl, 256);
+        $_data['url'] = substr($fullUrl, -256);
         $_data['method'] = $request->method();
         $_data['req_header'] = json_encode($request->headers->all());
         $_data['req_body'] = $request->getContent();
