@@ -29,6 +29,8 @@ class LogRequest
         $_data['method'] = $request->method();
         $_data['req_header'] = json_encode($request->headers->all());
         $_data['req_body'] = $request->getContent();
+        $_data['req_header'] = '';
+        $_data['req_body'] = '';
 
         $httpLog = HttpLog::create($_data);
 
