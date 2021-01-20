@@ -24,17 +24,21 @@ class LogRequest
 
         $_data = [];
         $_data['ip'] = $request->ip();
-        $_data['url'] = $request->url();
+        $fullUrl = $request->fullUrl();
+        $_data['url'] = substr($fullUrl, 256);
         $_data['method'] = $request->method();
         $_data['req_header'] = json_encode($request->headers->all());
         $_data['req_body'] = $request->getContent();
 
+        $httpLog = HttpLog::create($_data);
+
+        $request->merge('mid_http_log_id', $httpLog->id);
+
         $response = $next($request);
 
-        $_data['res_header'] = json_encode($response->headers->all());
-        $_data['res_body'] = $response->getContent();
-
-        HttpLog::create($_data);
+        $httpLog->res_header = json_encode($response->headers->all());
+        $httpLog->res_body = $response->getContent();
+        $httpLog->save();
 
         return $response;
     }
